@@ -5,11 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CardComponent } from './pages/card/card/card.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NavigationComponent } from './parts/navigation/navigation/navigation.component';
+import { FooterComponent } from './pages/footer/footer/footer.component';
+import { DetailComponent } from './pages/product-detail/detail/detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CardComponent
+    CardComponent,
+    NavigationComponent,
+    FooterComponent,
+    DetailComponent,
   ],
   imports: [
     BrowserModule,

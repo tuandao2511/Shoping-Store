@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" [routerLink]="root">
+        <img src="/assets/brand.png" width="30" height="30" alt="">
+        E-Shop
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/category/0">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" routerLink="/category/1">Features</a>
+        <a class="nav-item nav-link" routerLink="/category/2">Pricing</a>
+        <a class="nav-item nav-link" routerLink="/category/3">Drink</a>
+      </div>
+      
+      <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link" href="#">
+            <i class="fas fa-shopping-cart"></i>
+            Cart
+        </a>
+        <a class="nav-item nav-link" href="#">Sign In</a>
+        <a class="nav-item nav-link" href="#">Sign Up</a>
+      </div>
+    </div>
+  </nav>
