@@ -8,6 +8,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavigationComponent } from './parts/navigation/navigation/navigation.component';
 import { FooterComponent } from './pages/footer/footer/footer.component';
 import { DetailComponent } from './pages/product-detail/detail/detail.component';
+import { FormsModule } from '@angular/forms';
+import { ProductListComponent } from './pages/product-list/product-list/product-list.component';
+import { CartComponent } from './pages/cart/cart/cart.component';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @NgModule({
   declarations: [
@@ -16,13 +21,16 @@ import { DetailComponent } from './pages/product-detail/detail/detail.component'
     NavigationComponent,
     FooterComponent,
     DetailComponent,
+    ProductListComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
