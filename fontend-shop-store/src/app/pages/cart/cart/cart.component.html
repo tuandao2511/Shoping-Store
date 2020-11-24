@@ -1,1 +1,43 @@
-<p>cart works!</p>
+<h1 class="display-4 text-center mb-4 mt-2">{{title}}</h1>
+<table class="table table-striped text-center">
+    <thead>
+        <tr>
+            <th>Photo</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let productInOrder of productsInOrder">
+            <th class="align-middle">
+                <a routerLink="/product/{{productInOrder?.productId}}">
+                <img src="{{productInOrder?.productIcon}}" alt="" width="100px"></a>
+            </th>
+            <td class="align-middle"><a routerLink="/product/{{productInOrder?.productId}}">Java Core</a></td>
+            <td class="align-middle">{{productInOrder?.productPrice | currency}}</td>
+            <td class="align-middle">
+                <input
+                [(ngModel)]="productInOrder.count" 
+                type="number" 
+                min="1"
+                [max]="productInOrder.productStock"
+                (onChange)="onChange()">
+            </td>
+            <td class="align-middle">{{productInOrder.count*productInOrder.productPrice |currency}}</td>
+            <td class="align-middle"><a href="http://" target="_blank"  (click) = "remove(productInOrder)">Remove</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="d-flex inline" *ngIf="productsInOrder?.length > 0 else empty">
+    <h5 class="mr-auto mt-2">Total: {{price | currency}}</h5>
+    <button class="btn btn-warning" (click) = "checkout()">Checkout</button>
+</div>
+
+
+<ng-template #empty>
+    <h4 class="text-muted text-center">Cart is empty. Go to get something! :)</h4> 
+</ng-template>
