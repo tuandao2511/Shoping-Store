@@ -31,12 +31,11 @@ export class CardComponent implements OnInit {
   }
 
   getProducts(page: number = 1, size: number = 3) {
-    console.log(this.router.snapshot.url);
     if(this.router.snapshot.url[0].path === 'product') {
       this.productService.getAllInPage(page, size).subscribe(res => {
         this.page = res;
         this.title = "Get Whatever You Want!"
-        console.log('page ' + page);
+        console.log('page ' + JSON.stringify(this.page));
       }) 
     } else if(this.router.snapshot.url[0].path == 'category'){
         const type = this.router.snapshot.url[1].path;

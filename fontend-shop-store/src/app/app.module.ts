@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { ProductListComponent } from './pages/product-list/product-list/product-list.component';
 import { CartComponent } from './pages/cart/cart/cart.component';
 import { CookieService } from 'ngx-cookie-service';
-
+import { PaginationComponent } from './parts/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +23,7 @@ import { CookieService } from 'ngx-cookie-service';
     DetailComponent,
     ProductListComponent,
     CartComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,

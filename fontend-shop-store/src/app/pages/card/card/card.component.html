@@ -1,5 +1,5 @@
 <h1 class="display-4 text-center mb-4 mt-2">{{title}}</h1>
-<div class="row text-center card-deck">
+<div class="row text-center card-deck mb-5">
     <div class="col-lg-4" *ngFor="let productInfo of page?.content">
         <div class="card">
             <img src="{{productInfo.productIcon}}" alt="" height="50%">
@@ -19,3 +19,4 @@
         
     </div>
 </div>
+<app-pagination [currentPage]="page"></app-pagination>

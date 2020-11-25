@@ -27,7 +27,7 @@
                 (onChange)="onChange()">
             </td>
             <td class="align-middle">{{productInOrder.count*productInOrder.productPrice |currency}}</td>
-            <td class="align-middle"><a href="http://" target="_blank"  (click) = "remove(productInOrder)">Remove</a></td>
+            <td class="align-middle"><a routerLink="./"  (click) = "remove(productInOrder)">Remove</a></td>
         </tr>
     </tbody>
 </table>
