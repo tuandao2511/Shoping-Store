@@ -2,7 +2,7 @@
 <div class="row justify-content-center">
     <div class="col-lg-6">
         <div class="card text-center">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/41f6Rd6ZEPL._SX363_BO1,204,203,200_.jpg" alt="" height="60%">
+            <img src="{{productInfo?.productIcon}}" alt="" height="60%">
             <div class="card-body">
                 <h4 class="card-title">{{productInfo?.productName}}</h4>
                 <form name="form" #form='ngForm' (ngSubmit) = "productInfo?.productStatus == 0 && addToCart()">

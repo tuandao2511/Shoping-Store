@@ -16,7 +16,7 @@
                 <a routerLink="/product/{{productInOrder?.productId}}">
                 <img src="{{productInOrder?.productIcon}}" alt="" width="100px"></a>
             </th>
-            <td class="align-middle"><a routerLink="/product/{{productInOrder?.productId}}">Java Core</a></td>
+            <td class="align-middle"><a routerLink="/product/{{productInOrder?.productId}}">{{productInOrder?.productName}}</a></td>
             <td class="align-middle">{{productInOrder?.productPrice | currency}}</td>
             <td class="align-middle">
                 <input
