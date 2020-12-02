@@ -13,6 +13,8 @@ import { ProductListComponent } from './pages/product-list/product-list/product-
 import { CartComponent } from './pages/cart/cart/cart.component';
 import { CookieService } from 'ngx-cookie-service';
 import { PaginationComponent } from './parts/pagination/pagination.component';
+import { SignUpComponent } from './pages/sign-up/sign-up/sign-up.component';
+import { LoginComponent } from './pages/login/login/login.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { PaginationComponent } from './parts/pagination/pagination.component';
     ProductListComponent,
     CartComponent,
     PaginationComponent,
+    SignUpComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

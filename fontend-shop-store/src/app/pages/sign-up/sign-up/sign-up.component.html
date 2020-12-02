@@ -1,0 +1,65 @@
+<h1 align="center" class="display-4">Sign Up</h1>
+<div style="width: 40%; margin-right: 30%; margin-left: 30%;">
+    <form #form="ngForm" (ngSubmit) = "onSubmit()">
+        <div class="form-group">
+            <label><b>Email address</b></label>
+            <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="Enter email" #email="ngModel" [(ngModel)]="user.email" required autofocus email>
+            <div *ngIf="email.invalid && (email.touched || email.dirty)">
+                <div *ngIf="email.errors.required">
+                    <small class="text-danger">Email is required.</small>
+                </div>
+                <div *ngIf="email.errors.email">
+                    <small class="text-danger">Invalid Email.</small>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label><b>Your name</b></label>
+            <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Your name" #name="ngModel" #name="ngModel" [(ngModel)]="user.name" required minlength="3">
+            <div *ngIf="name.invalid && (name.touched || name.dirty)">
+                <div *ngIf="name.errors.required">
+                    <small class="text-danger">Name is required.</small>
+                </div>
+                <div *ngIf="name.errors.minlength">
+                    <small class="text-danger"> Name must be at least 3 characters long.</small>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label><b>Password</b></label>
+            <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Password" #password="ngModel" [(ngModel)]="user.password" required>
+            <div *ngIf="password.invalid && (password.touched || password.dirty)">
+                <div *ngIf="password.errors.required">
+                    <small class="text-danger">Password is required.</small>
+                </div>
+                <div *ngIf="password.errors.minlength">
+                    <small class="text-danger">Password must be at least 3 characters long.</small>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label><b>Phone</b></label>
+            <input type="tel" class="form-control form-control-lg" id="phone" name="phone" placeholder="Phone" #phone="ngModel" #phone="ngModel" [(ngModel)]="user.phone" minlength="7" required>
+            <div *ngIf="phone.invalid && (phone.touched || phone.dirty)">
+                <div *ngIf="phone.errors.required">
+                    <small class="text-danger">Password is required.</small>
+                </div>
+                <div *ngIf="phone.errors.minlength">
+                    <small class="text-danger">Password must be at least 7 characters long.</small>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label><b>Address</b></label>
+            <input type="text" class="form-control form-control-lg" id="address" name="address" placeholder="Address" #address="ngModel" #address="ngModel" [(ngModel)]="user.address" required>
+            <div *ngIf="address.invalid && (address.touched || address.dirty)">
+                <div *ngIf="address.errors.required">
+                    <small class="text-danger">Password is required.</small>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button  type="submit" class="btn btn-lg btn-primary" [disabled] = "!form.form.valid">Sign Up</button>
+        </div>
+    </form>
+</div>
