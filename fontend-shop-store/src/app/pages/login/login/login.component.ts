@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +15,20 @@ export class LoginComponent implements OnInit {
     remembered: false
   }
 
-  constructor() { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onSignIn() {
-    
+    this.userService.login(this.user).subscribe(user => {
+        this.router.navigateByUrl('/');
+    });
+  }
+
+  fillLoginFields(u, p) {
+    this.user.username = u;
+    this.user.password = p;
+    this.onSignIn();
   }
 }
