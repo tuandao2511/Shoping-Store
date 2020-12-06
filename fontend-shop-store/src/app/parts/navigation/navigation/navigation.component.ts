@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { Role } from 'src/app/enum/Role';
 import { UserResponse } from 'src/app/response/UserResponse';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -16,7 +17,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
   currentUserSubscription: Subscription;
   name: string;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.currentUserSubscription = this.userService.currentUserObservable.subscribe(user => {
@@ -27,6 +28,10 @@ export class NavigationComponent implements OnInit, OnDestroy {
        }
        // xu ly manager and employee
     })
+  }
+
+  onLogout() {
+    this.userService.logout();
   }
 
   ngOnDestroy(): void {

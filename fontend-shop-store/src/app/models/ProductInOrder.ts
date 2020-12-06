@@ -1,4 +1,4 @@
-import {ProductInfo} from "./productInfo";
+import {ProductInfo} from "./ProductInfo";
 
 export class ProductInOrder {
     productId: string;
@@ -10,7 +10,7 @@ export class ProductInOrder {
     categoryType: number;
     count: number;
 
-    constructor(productInfo:ProductInfo, quantity = 1){
+    constructor(productInfo: ProductInfo, quantity = 1){
         this.productId = productInfo.productId;
         this.productName = productInfo.productName;
         this.productPrice = productInfo.productPrice;

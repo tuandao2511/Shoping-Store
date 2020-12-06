@@ -44,6 +44,12 @@ export class UserService {
     );
   }
 
+  logout() {
+    this.currentUserSubject.next(null);
+    localStorage.removeItem('currentUser');
+    this.cookieService.delete('currentUser');
+  }
+
     /**
      * Handle Http operation that failed.
      * Let the app continue.

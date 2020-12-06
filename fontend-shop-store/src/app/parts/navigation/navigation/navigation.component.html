@@ -24,7 +24,7 @@
         <a class="nav-item nav-link " href="#">
           {{name}}
         </a>
-        <a class="nav-item nav-link">
+        <a class="nav-item nav-link" (click) = "onLogout()" routerLink="/login" [queryParams]="{logout: true}" >
           Sign out
         </a>
         </ng-container>

@@ -1,5 +1,6 @@
 <h1 class="display-4 text-center">Sign In</h1>
 <div class="ml-auto mr-auto " style="width: 40%;">
+    <div class="alert alert-info" *ngIf="isLogout">You have been logged out.</div>
     <form class="mb-2" name="form" #form="ngForm" ngForm (ngSubmit)="onSignIn()">
         <div class="form-group">
             <label>Email address</label>

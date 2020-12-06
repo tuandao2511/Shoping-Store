@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -15,9 +15,13 @@ export class LoginComponent implements OnInit {
     remembered: false
   }
 
-  constructor(private userService: UserService, private router: Router) { }
+  isLogout: boolean = false;
+
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.isLogout = this.route.snapshot.queryParamMap.has('logout');
+    console.log('isLogout ' + this.isLogout);
   }
 
   onSignIn() {
