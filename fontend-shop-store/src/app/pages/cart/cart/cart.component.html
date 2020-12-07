@@ -24,7 +24,7 @@
                 type="number" 
                 min="1"
                 [max]="productInOrder.productStock"
-                (onChange)="onChange()">
+                (change)="onChange(productInOrder)">
             </td>
             <td class="align-middle">{{productInOrder.count*productInOrder.productPrice |currency}}</td>
             <td class="align-middle"><a routerLink="./"  (click) = "remove(productInOrder)">Remove</a></td>

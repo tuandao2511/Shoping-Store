@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { UserService } from './user.service';
 import { UserResponse } from '../response/UserResponse';
 import { apiUrl } from 'src/environments/environment';
+import { catchError, map, tap } from 'rxjs/operators';
+import { Cart } from '../models/Cart';
 
 @Injectable({
   providedIn: 'root'
@@ -48,8 +50,24 @@ export class CartService {
   }
 
   getCart() : Observable<ProductInOrder[]> {
-    const localCart = this.getLocalCart();
-    return of(localCart);
+    const localCart : ProductInOrder[]= this.getLocalCart();
+    if(this.currentUser) {
+      if(localCart.length > 0) {
+        return this.http.post<Cart>(this.cartUrl, localCart).pipe(
+          tap(_ => {
+            this.clearLocalCart();
+          }),
+          map(data => data?.products),
+          catchError(_ => of([]))
+        );
+      } else {
+        return this.http.get<Cart>(this.cartUrl).pipe(
+          map(data => data?.products)
+        )
+      }
+    } else {
+      return of(localCart);
+    }
   }
 
   remove(productInOrder: ProductInOrder) : Observable<boolean>{
@@ -71,6 +89,29 @@ export class CartService {
     }
   }
 
+  clearLocalCart() {
+    this.localMap = {};
+    this.cookieStore.delete('cart');
+  }
+
+  checkout() : Observable<any>{
+    const url = `${this.cartUrl}/checkout`
+    return this.http.post(url, null).pipe();
+  }
+
+  update(productInOrder: ProductInOrder): Observable<ProductInOrder> {
+    if(this.currentUser) {
+      const url = `${this.cartUrl}/${productInOrder.productId}`
+      return this.http.put<ProductInOrder>(url, productInOrder.count).pipe()
+    } else {
+      this.localMap[productInOrder.productId] = productInOrder;
+    }
+  }
+
+  storeLocalCart() {
+    this.cookieStore.set('cart', JSON.stringify(this.localMap));
+  }
+
   private getLocalCart(): ProductInOrder[] {
     if(this.cookieStore.check('cart')) {
       this.localMap = JSON.parse(this.cookieStore.get('cart'));
@@ -80,5 +121,7 @@ export class CartService {
       return [];
     }
   }
+
+  
 
 }

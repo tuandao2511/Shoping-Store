@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CardComponent } from './pages/card/card/card.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NavigationComponent } from './parts/navigation/navigation/navigation.component';
 import { FooterComponent } from './pages/footer/footer/footer.component';
 import { DetailComponent } from './pages/product-detail/detail/detail.component';
@@ -15,6 +15,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { PaginationComponent } from './parts/pagination/pagination.component';
 import { SignUpComponent } from './pages/sign-up/sign-up/sign-up.component';
 import { LoginComponent } from './pages/login/login/login.component';
+import { JwtInterceptorService } from './interceptors/jwt-interceptor.service';
+import { ErrorInterceptorService } from './interceptors/error-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,7 @@ import { LoginComponent } from './pages/login/login/login.component';
     CartComponent,
     PaginationComponent,
     SignUpComponent,
-    LoginComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,9 @@ import { LoginComponent } from './pages/login/login/login.component';
     HttpClientModule,
     FormsModule,
   ],
-  providers: [CookieService],
+  providers: [CookieService,
+  {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true},
+  {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

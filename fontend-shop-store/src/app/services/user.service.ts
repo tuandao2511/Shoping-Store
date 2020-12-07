@@ -50,6 +50,10 @@ export class UserService {
     this.cookieService.delete('currentUser');
   }
 
+  get currentUserValue() {
+    return this.currentUserSubject.value;
+  }
+
     /**
      * Handle Http operation that failed.
      * Let the app continue.
