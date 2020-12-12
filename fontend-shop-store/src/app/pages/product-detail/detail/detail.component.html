@@ -1,0 +1,36 @@
+<h1 class="display-4 text-center mb-4 mt-2">{{title}}</h1>
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card text-center">
+            <img src="{{productInfo?.productIcon}}" alt="" height="60%">
+            <div class="card-body">
+                <h4 class="card-title">{{productInfo?.productName}}</h4>
+                <form name="form" #form='ngForm' (ngSubmit) = "productInfo?.productStatus == 0 && addToCart()">
+                    <div class="text-left">
+                        <p><strong>Description: </strong>{{productInfo?.productDescription}}</p>
+                        <p><strong>Price: </strong>{{productInfo?.productPrice | currency}}</p>
+                        <p><strong>Stock: </strong>{{productInfo?.productStock}}</p>
+                        <label>
+                            <strong>Quantity: </strong>
+                            <input
+                            [(ngModel)]="count" 
+                            type="number"
+                            name="count"
+                            min="1"
+                            [max]="productInfo?.productStock">
+                        </label>
+                        <p><strong>Subtotal: </strong>
+                            <label id="subtotal">{{ count*productInfo?.productPrice | currency}}</label>
+                          </p>
+                    </div>
+            
+                      <button type="submit" class="btn btn-primary btn-lg" *ngIf="productInfo?.productStatus == 0; else offBlock">Add to Cart</button>
+                      <ng-template #offBlock><a class="btn btn-secondary btn-lg disabled">Unavailable</a></ng-template>
+                </form>
+                <!-- <ng-template><a class="btn btn-secondary btn-lg disabled">Unavailable</a></ng-template> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,42 @@
+<h1 class="display-4 text-center">Sign In</h1>
+<div class="ml-auto mr-auto " style="width: 40%;">
+    <div class="alert alert-info" *ngIf="isLogout">You have been logged out.</div>
+    <form class="mb-2" name="form" #form="ngForm" ngForm (ngSubmit)="onSignIn()">
+        <div class="form-group">
+            <label>Email address</label>
+            <input type="email" class="form-control form-control-lg" name="email" #email="ngModel" [(ngModel)]="user.email" placeholder="Enter email" required autofocus email>
+            <div *ngIf="email.invalid && (email.touched || email.dirty)">
+                <p class="alert alert-danger" *ngIf="email.errors.required">Email is required</p>
+                <p class="alert alert-danger" *ngIf="email.errors.email">Email is invalid</p>   
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control form-control-lg" name="password" #password="ngModel" [(ngModel)]="user.password" placeholder="Password" minlength="6" required>
+            <div *ngIf="password.invalid && (password.touched || password.dirty)">
+                <p class="alert alert-danger" *ngIf="password.errors.required">Password is required</p>
+                <p class="alert alert-danger" *ngIf="password.errors.minlength">Password muse be at least 6 characters</p>   
+            </div>
+        </div>
+        <div class="form-group form-check">
+            <input class="form-check-input" name="remember" type="checkbox" [(ngModel)]="user.remembered" #remember="ngModel" >
+            <label class="form-check-label">Remember me</label>
+            <a routerLink="/register" class="float-right">Sign Up</a>
+        </div>
+        <button class="btn btn-lg btn-primary" type="submit" style="width: 100%;" [disabled]="form.form.invalid">Sign In</button>
+    </form>
+    
+    <strong>Sample Users</strong>
+    <div class="row">
+        <div class="col-4"><a 
+            href="javascript:void(0)"
+            (click)="fillLoginFields('customer1@email.com','123')">customer1</a></div>
+        <div class="col-4"><a 
+            href="javascript:void(0)"
+            (click)="fillLoginFields('employee1@email.com','123')">employee1</a></div>
+        <div class="col-4 "><a 
+            href="javascript:void(0)"
+            (click)="fillLoginFields('manager1@email.com','123')">manager1</a></div>
+    </div>
+</div>
+

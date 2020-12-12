@@ -1,0 +1,22 @@
+<h1 class="display-4 text-center mb-4 mt-2">{{title}}</h1>
+<div class="row text-center card-deck mb-5">
+    <div class="col-lg-4" *ngFor="let productInfo of page?.content">
+        <div class="card">
+            <img src="{{productInfo.productIcon}}" alt="" height="50%">
+            <div class="card-body">
+                <h4 class="card-title">{{productInfo.productName}}</h4>
+                <div class="text-left">
+                    <p class="card-text"><strong>Description: </strong>{{productInfo.productDescription}}</p>
+                    <p class="card-text"><strong>Price: </strong>${{productInfo.productPrice}}</p>
+                    <p class="card-text"><strong>Stock: </strong>{{productInfo.productStock}}</p>
+                </div>
+                <br>
+                <br>
+                <a routerLink="/product/{{productInfo.productId}}" class="btn btn-primary btn-lg" *ngIf="productInfo.productStatus == 0; else offBlock">Get it</a>
+                <ng-template #offBlock><a class="btn btn-secondary btn-lg disabled">Unavailable</a></ng-template>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<app-pagination [currentPage]="page"></app-pagination>
