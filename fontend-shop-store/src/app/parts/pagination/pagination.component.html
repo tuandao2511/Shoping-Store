@@ -15,7 +15,8 @@
         <li class="page-item" *ngIf="i !== currentPage?.number; else active"><a class="page-link"
             routerLink="./"
             [queryParams]="{page: i+1, size: currentPage?.size}">{{i+1}}
-            </a></li>
+            </a>
+        </li>
         <ng-template #active>
             <li class="page-item active"><a class="page-link">{{i+1}}</a></li>
         </ng-template>

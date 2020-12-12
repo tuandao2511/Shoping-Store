@@ -17,6 +17,8 @@ import { SignUpComponent } from './pages/sign-up/sign-up/sign-up.component';
 import { LoginComponent } from './pages/login/login/login.component';
 import { JwtInterceptorService } from './interceptors/jwt-interceptor.service';
 import { ErrorInterceptorService } from './interceptors/error-interceptor.service';
+import { OrderComponent } from './pages/order/order.component';
+import { OrderDetailComponent } from './pages/order-detail/order-detail.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { ErrorInterceptorService } from './interceptors/error-interceptor.servic
     CartComponent,
     PaginationComponent,
     SignUpComponent,
-    LoginComponent
+    LoginComponent,
+    OrderComponent,
+    OrderDetailComponent
   ],
   imports: [
     BrowserModule,
