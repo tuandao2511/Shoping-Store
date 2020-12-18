@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Role } from 'src/app/enum/Role';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   }
 
   isLogout: boolean = false;
-
+  isInvalid: boolean;
+  
   constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -26,7 +28,17 @@ export class LoginComponent implements OnInit {
 
   onSignIn() {
     this.userService.login(this.user).subscribe(user => {
-        this.router.navigateByUrl('/');
+        if(user) {
+          if (user.role != Role.Customer) {
+            this.router.navigateByUrl('/seller');
+          } else {
+            this.router.navigateByUrl('/');
+          }
+        } else {
+          this.isLogout = false;
+          this.isInvalid = true;
+        }
+
     });
   }
 

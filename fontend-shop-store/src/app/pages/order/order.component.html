@@ -1,5 +1,7 @@
 <h1 align="center" class="display-4 mb-5">Orders</h1>
-
+<a *ngIf="currentUser?.role == Role.Customer" style="color: inherit"
+   routerLink="/seller/product/new" class="float-right mb-3"><i class="fas fa-plus fa-2x">Add</i>
+</a>
 <table class="table table-striped text-center">
     <thead>
     <tr>

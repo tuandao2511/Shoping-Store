@@ -19,6 +19,7 @@ import { JwtInterceptorService } from './interceptors/jwt-interceptor.service';
 import { ErrorInterceptorService } from './interceptors/error-interceptor.service';
 import { OrderComponent } from './pages/order/order.component';
 import { OrderDetailComponent } from './pages/order-detail/order-detail.component';
+import { ProductEditComponent } from './pages/product-edit/product-edit/product-edit.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { OrderDetailComponent } from './pages/order-detail/order-detail.componen
     SignUpComponent,
     LoginComponent,
     OrderComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    ProductEditComponent
   ],
   imports: [
     BrowserModule,

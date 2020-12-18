@@ -37,6 +37,20 @@ export class ProductService {
             return of(new ProductInfo());
         })
     );
-}
+  }
 
+  delelte(productInfo: ProductInfo): Observable<any> {
+    const url = `${apiUrl}/seller/product/${productInfo.productId}/delete`;
+    return this.http.delete(url);
+  }
+
+  update(productInfo: ProductInfo): Observable<ProductInfo> {
+    const url = `${apiUrl}/seller/product/${productInfo.productId}/edit`;
+    return this.http.put<ProductInfo>(url, productInfo);
+  }
+
+  create(productInfo: ProductInfo): Observable<ProductInfo> {
+    const url = `${apiUrl}/seller/product/new`;
+    return this.http.post<ProductInfo>(url, productInfo);
+  }
 }
